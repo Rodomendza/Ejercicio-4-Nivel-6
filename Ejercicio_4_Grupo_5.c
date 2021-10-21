@@ -138,8 +138,8 @@ int BuscarNombre (ListaPais a, int b, int *c)
 	fflush(stdin);
 	scanfString(c);
 	i=1;f=b; m=(i+f)/2;
-	while ((i<=f)&&(strcmp(a[m].c)!=0)){
-		if (strcmp(a[m].c)==-1)
+	while ((i<=f)&&(strcmp(a[m],c)!=0)){
+		if (strcmp(a[m],c)==-1)
 			i=m+1;
 		else 
 			f=m-1;
