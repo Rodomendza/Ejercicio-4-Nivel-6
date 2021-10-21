@@ -114,11 +114,19 @@ void CargarLista (ListaPais a, int *b)
 
 void OrdenarLista(ListaPais a, int b)
 {
-    printf("\n\nORDENANDO LISTA...");
-
-
-
-    printf("\n\nLISTA ORDENADA");
+    int i, j;
+	ListaPais aux;
+	printf("\n\nORDENANDO LISTA...");
+	for(i=0; i<b - 1; i++){
+		for(j=i+1; j<b; j++){
+			if(strcmp(a[i].pais , a[j].pais)==1){
+				aux=a[i];
+				a[i] = a[j];
+				a[j] = aux;
+			}
+		}
+	}
+	printf("\n\nLISTA ORDENADA");
 }
 
 int BuscarNombre (ListaPais a, int b, int *c) 
@@ -170,7 +178,18 @@ void MostrarPais (ListaPais a, int b)
 
 void AgregarPais (ListaPais a, int *b)
 {
-
+int i;
+	
+	printf("\n\n________AGREGAR PAIS A LA LISTA________");
+	
+	for ( i = *b; i < *b + 1; i++)
+	{
+		fflush(stdin);
+		printf("\nIngrese el nombre del pais : "); scanfString(a[i].pais);
+		printf("\nIngrese el nombre de la capital: : "); scanfString(a[i].capital);
+		printf("\nIngrese el nombre del continente  : "); scanfString(a[i].continente);
+	}
+	*b += 1;
 }
 
 void EliminarPais (ListaPais a, int *b)
