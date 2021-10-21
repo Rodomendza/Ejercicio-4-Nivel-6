@@ -32,7 +32,7 @@ void MostrarPais (ListaPais a, int b); /*1*/
 /*TAREAS SOBRE LA LISTA DE REGISTROS*/
 void CargarLista (ListaPais a, int *b); /*1*/
 void OrdenarLista (ListaPais a, int b); /*3*/
-void BuscarNombre (ListaPais a, int b, int *c); /*3*/
+int BuscarNombre (ListaPais a, int b, int *c); /*3*/
 void AgregarPais (ListaPais a, int *b); /*2*/
 void EliminarPais (ListaPais a, int *b); /*2*/
 void EliminarPorContinente (ListaPais a, int *b); /*2*/
@@ -121,9 +121,26 @@ void OrdenarLista(ListaPais a, int b)
     printf("\n\nLISTA ORDENADA");
 }
 
-void BuscarNombre (ListaPais a, int b, int *c) 
+int BuscarNombre (ListaPais a, int b, int *c) 
 {
-
+	int pos=0;
+	unsigned pos;
+	int i, f, m;
+	printf("\nIngrese el .... a buscar: ");
+	fflush(stdin);
+	scanfString(c);
+	i=1;f=b; m=(i+f)/2;
+	while ((i<=f)&&(strcmp(a[m].c)!=0)){
+		if (strcmp(a[m].c)==-1)
+			i=m+1;
+		else 
+			f=m-1;
+		m=(i+f)/2;
+	}
+	if (i<=f)
+		pos=m;
+	else pos=0;
+	return pos;
 }
 
 void MostrarCapital (ListaPais a, int b)
