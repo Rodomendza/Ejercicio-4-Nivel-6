@@ -152,10 +152,21 @@ void MostrarCapital (ListaPais a, int b)
 
 void MostrarPais (ListaPais a, int b)
 {
-    printf("Ingrese el nombre de la capital : "); scanfString();
 
-    BuscarNombre ();
-}
+    int i;
+    char capital_busca [CMAX];
+
+    printf("Ingrese el nombre de la capital : "); scanfString(capital_busca);
+
+    for ( i = 0; i < b; i++)
+    {
+        if (a[i].capital == capital_busca)
+        {
+            prinf("%s", a[i].pais);
+        }
+    }
+}	
+    
 
 void AgregarPais (ListaPais a, int *b)
 {
