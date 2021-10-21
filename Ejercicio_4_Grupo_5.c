@@ -160,7 +160,7 @@ void MostrarPais (ListaPais a, int b)
 
     for ( i = 0; i < b; i++)
     {
-        if (a[i].capital == capital_busca)
+        if (strcmp(a[i].capital, capital_busca) == 0)
         {
             prinf("%s", a[i].pais);
         }
