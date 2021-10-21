@@ -7,7 +7,7 @@ c) Añadir un nuevo país preservando el orden.
 d) Dado el nombre de un país, eliminar sus datos.
 e) Dado el nombre de un continente, eliminar todos los países que pertenecen al mismo.
 f) Mostrar todos los países y sus capitales.*/
-/*Se puede editar*/
+/*Se puede editar x2 jefe*/
 /*DATOS DE ENTRADA*/
 
 /*TAREAS*/
