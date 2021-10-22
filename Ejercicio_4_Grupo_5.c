@@ -36,6 +36,7 @@ void CargarLista (ListaPais a, int *b); /*1*/
 void OrdenarLista (ListaPais a, int b); /*3*/
 int BuscarPaisNombre (ListaPais a, int b, char c[]); 
 int BuscarCapitalNombre (ListaPais a, int b, char c[]); /*3*/
+int BuscarContinente (ListaPais a, int b, char c[]);
 void AgregarPais (ListaPais a, int *b); /*2*/
 void EliminarPais (ListaPais a, int *b); /*2*/
 void EliminarPorContinente (ListaPais a, int *b); /*2*/
@@ -105,7 +106,7 @@ void CargarLista (ListaPais a, int *b)
     do
     {
 		fflush(stdin);
-        printf("\n\nIngrese el nombre del pais: "); scanfString(a[i].pais);
+        printf("\nIngrese el nombre del pais: "); scanfString(a[i].pais);
         printf("\nIngrese el nombre de la capital: "); scanfString(a[i].capital);
         printf("\nIngrese el nombre del continente: "); scanfString(a[i].continente);
 
@@ -241,20 +242,73 @@ int i;
 
 void EliminarPais (ListaPais a, int *b)
 {
-    printf("Ingrese el nombre del pais al cual quiere borrar los datos : "); scanfString();
+	char Buscar[CMAX];
+	int pos, i;
 
-    BuscarNombre ();
+	fflush(stdin);
+	
+	printf("\nIngrese el nombre del pais que quiere eliminar: "); scanfString(Buscar);
+	
+	pos = BuscarPaisNombre (a, *b, Buscar);
+
+	if (strcmp(a[pos].pais, Buscar) == 0)
+	{
+		for(i = *b; i < *b; i++)
+		{ 
+			strcpy(a[i].pais, a[i + 1].pais);	
+		}
+	
+		*b= *b - 1;
+	}
+	else
+	{
+		printf("\nEse pais no se encuentra en la lista");
+	}
 }
 
-void EliminarPorContinente (ListaPais a, int *b)
+/*void EliminarPorContinente (ListaPais a, int *b)
 {
-    printf("\n\nIngrese el nombre del continente: "); scanfString();
+	int pos;
+	char Buscar[CMAX];
 
-    if ()
+	printf("\n\nIngrese el nombre del continente: "); scanfString(Buscar);
+	
+	pos = BuscarContinente (a, *b, Buscar);
+
+	if (strcmp(a[pos].continente, Buscar) == 0)
+	{
+		for(i = *b; i < *b; i++)
+		{ 
+			strcpy(a[i].continente, a[i + 1].continente);	
+		}
+	
+		*b= *b - 1;
+	}
+	else
+	{
+		printf("\nEse contienente no se encuentra en la lista");
+	}
+}*/
+
+int BuscarContinente (ListaPais a, int b, char c[])
+{
+	int i, pos;
+
+    pos = 0;
+
+    while (i <= b && strcmp(a[i].continente, c) != 0)
     {
-        EliminarPais();
+        i += 1;
     }
+    
+    if (i <= b)
+    {
+        pos = i;
+    }
+    
+    return pos;
 }
+
 
 void MostrarPaisCapital (ListaPais a, int b)
 {
