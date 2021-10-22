@@ -159,20 +159,22 @@ int BuscarPaisNombre (ListaPais a, int b, char c[])
 
 int BuscarCapitalNombre (ListaPais a, int b, char c[])
 {
-	int i, f, m, pos;
-	pos=0;
-	i=0;f=b; m=(i+f)/2;
-	while ((i<=f) && (strcmp(a[m].capital,c)!=0)){
-		if (strcmp(a[m].capital,c)==-1)
-			i=m+1;
-		else 
-			f=m-1;
-		m=(i+f)/2;
-	}
-	if (i<=f || strcmp(a[m].capital,c) == 0)
-		pos=m;
-	else pos=0;
-	return pos;
+	int i, pos;
+
+    pos = 0;
+	i = 0;
+
+    while (i <= b && strcmp(a[i].capital, c) != 0)
+    {
+        i += 1;
+    }
+    
+    if (i <= b)
+    {
+        pos = i;
+    }
+    
+    return pos;
 }
 
 void MostrarCapital (ListaPais a, int b)
