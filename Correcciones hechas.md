@@ -7,3 +7,5 @@ Cambie algunos printf y agregue otros ademas del fflush stdin
 
 Modulo de Ordenamiento(Lineas 121-136)
 En la linea 129 y 131 le agregue a aux los corchetes -> [i]
+
+En el menu solo movi algunas lineas y agregue un system("cls")
