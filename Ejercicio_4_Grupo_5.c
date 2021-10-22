@@ -209,8 +209,16 @@ void EliminarPorContinente (ListaPais a, int *b)
     }
 }
 
-void MostrarPaisCapital (ListaPais a, int b)
+void MostrarPaisCapital (ListaPais a, int *b)
 {
+	int i;
+	
+	printf("\nPais-Capital\n")
+	for(i = 0; i < *b; i++)
+	{
+		printf("\n%d) %s-%s", i, a[i].pais, a[i].capital);
+		
+	}
 
 }
 
