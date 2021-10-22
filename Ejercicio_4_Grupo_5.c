@@ -35,7 +35,7 @@ void MostrarPais (ListaPais a, int b); /*1*/
 void CargarLista (ListaPais a, int *b); /*1*/
 void OrdenarLista (ListaPais a, int b); /*3*/
 int BuscarPaisNombre (ListaPais a, int b, char c[]); 
-int BuscarCapitalNombre (ListaPais a, int b, char c[]);; /*3*/
+int BuscarCapitalNombre (ListaPais a, int b, char c[]); /*3*/
 void AgregarPais (ListaPais a, int *b); /*2*/
 void EliminarPais (ListaPais a, int *b); /*2*/
 void EliminarPorContinente (ListaPais a, int *b); /*2*/
