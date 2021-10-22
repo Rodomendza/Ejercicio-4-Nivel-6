@@ -34,8 +34,8 @@ void MostrarPais (ListaPais a, int b); /*1*/
 /*TAREAS SOBRE LA LISTA DE REGISTROS*/
 void CargarLista (ListaPais a, int *b); /*1*/
 void OrdenarLista (ListaPais a, int b); /*3*/
-int BuscarPaisNombre (ListaPais a, int b, int *c); 
-int BuscarCapitalNombre (ListaPais a, int b, int *c); /*3*/
+int BuscarPaisNombre (ListaPais a, int b, char c[]); 
+int BuscarCapitalNombre (ListaPais a, int b, char c[]);; /*3*/
 void AgregarPais (ListaPais a, int *b); /*2*/
 void EliminarPais (ListaPais a, int *b); /*2*/
 void EliminarPorContinente (ListaPais a, int *b); /*2*/
@@ -139,11 +139,11 @@ void OrdenarLista(ListaPais a, int b)
 	printf("\n\nLISTA ORDENADA");
 }
 
-int BuscarPaisNombre (ListaPais a, int b, int *c) 
+int BuscarPaisNombre (ListaPais a, int b, char c[]) 
 {
 	int i, f, m, pos;
-	pos=0
-	i=1;f=b; m=(i+f)/2;
+	pos=0;
+	i=0;f=b; m=(i+f)/2;
 	while ((i<=f)&&(strcmp(a[m].pais,c)!=0)){
 		if (strcmp(a[m].pais,c)==-1)
 			i=m+1;
@@ -151,25 +151,25 @@ int BuscarPaisNombre (ListaPais a, int b, int *c)
 			f=m-1;
 		m=(i+f)/2;
 	}
-	if (i<=f)
+	if (i<=f || strcmp(a[m].pais,c) == 0)
 		pos=m;
 	else pos=0;
 	return pos;
 }
 
-int BuscarCapitalNombre (ListaPais a, int b, int *c)
+int BuscarCapitalNombre (ListaPais a, int b, char c[])
 {
 	int i, f, m, pos;
-	pos=0
-	i=1;f=b; m=(i+f)/2;
-	while ((i<=f)&&(strcmp(a[m].capital,c)!=0)){
+	pos=0;
+	i=0;f=b; m=(i+f)/2;
+	while ((i<=f) && (strcmp(a[m].capital,c)!=0)){
 		if (strcmp(a[m].capital,c)==-1)
 			i=m+1;
 		else 
 			f=m-1;
 		m=(i+f)/2;
 	}
-	if (i<=f)
+	if (i<=f || strcmp(a[m].capital,c) == 0)
 		pos=m;
 	else pos=0;
 	return pos;
@@ -177,26 +177,47 @@ int BuscarCapitalNombre (ListaPais a, int b, int *c)
 
 void MostrarCapital (ListaPais a, int b)
 {
-    printf("Ingrese el nombre del pais: "); scanfString();
+    int pos;
+    char Buscar [CMAX];
+	
+	fflush(stdin);
 
-    BuscarNombre ();
+    printf("Ingrese el nombre del pais: "); scanfString(Buscar);
+
+    pos = BuscarPaisNombre (a, b, Buscar);
+
+	if (strcmp(a[pos].pais, Buscar) == 0)
+	{
+		printf("\nLa capital del pais ingresado es: %s", a[pos].capital);
+	}
+	else
+	{
+		printf("\nEse pais no se encuentra en la lista o el nombre es incorrecto");
+	}
+    
 }
 
 void MostrarPais (ListaPais a, int b)
 {
+    int pos;
+    char Buscar [CMAX];
+	
+	fflush(stdin);
 
-    int i;
-    char capital_busca [CMAX];
+    printf("Ingrese el nombre de la capital: "); scanfString(Buscar);
 
-    printf("Ingrese el nombre de la capital : "); scanfString(capital_busca);
-
-    for ( i = 0; i < b; i++)
-    {
-        if (strcmp(a[i].capital, capital_busca) == 0)
-        {
-            prinf("%s", a[i].pais);
-        }
-    }
+    pos = BuscarCapitalNombre (a, b, Buscar);
+	
+	printf("\nPosicion= %d", pos);
+	
+	if (strcmp(a[pos].capital, Buscar) == 0)
+	{
+		printf("\nEl pais de la capital ingresada es: %s", a[pos].pais);
+	}
+	else
+	{
+		printf("\nEsa capital no se encuentra en la lista o el nombre es incorrecto");
+	}
 }	
     
 
