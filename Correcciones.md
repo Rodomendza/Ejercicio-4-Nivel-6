@@ -1,6 +1,6 @@
 Correcciones hechas en el codigo: 
 
-22/10-11:30 hs-Mendoza Rodolfo
+22/10 - Mendoza Rodolfo
 
 Modulo de carga 
 Cambie algunos printf y agregue otros ademas del fflush stdin 
