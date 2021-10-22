@@ -13,6 +13,8 @@ f) Mostrar todos los países y sus capitales.*/
 /*TAREAS*/
 
 #include <stdio.h>
+#include <stlid.h>
+#include <string.h>
 #define CMAX 100
 #define MAX 200
 
