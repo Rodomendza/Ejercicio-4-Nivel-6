@@ -39,6 +39,7 @@ int BuscarCapitalNombre (ListaPais a, int b, char c[]); /*3*/
 int BuscarContinente (ListaPais a, int b, char c[]);
 void AgregarPais (ListaPais a, int *b); /*2*/
 void EliminarPais (ListaPais a, int *b); /*2*/
+void EliminarRegistro(ListaPais a, int b, int pos);
 void EliminarPorContinente (ListaPais a, int *b); /*2*/
 void MostrarPaisCapital (ListaPais a, int b); /*1*/
 
@@ -242,28 +243,21 @@ int i;
 
 void EliminarPais (ListaPais a, int *b)
 {
-	char Buscar[CMAX];
-	int pos, i;
-
+	int pos, m=*b; 
+	char Buscar [CMAX];
+	
 	fflush(stdin);
 	
-	printf("\nIngrese el nombre del pais que quiere eliminar: "); scanfString(Buscar);
-	
+	printf("Ingrese el nombre del pais al cual quiere borrar los datos : "); scanfString(Buscar);
 	pos = BuscarPaisNombre (a, *b, Buscar);
+	if(pos!=-1) 
+	{ 
+		EliminarRegistro(a, m, pos);
+		printf("\nEl pais fue eliminado");
+		*b= m-1;
+	}
 
-	if (strcmp(a[pos].pais, Buscar) == 0)
-	{
-		for(i = *b; i < *b; i++)
-		{ 
-			strcpy(a[i].pais, a[i + 1].pais);	
-		}
-	
-		*b= *b - 1;
-	}
-	else
-	{
-		printf("\nEse pais no se encuentra en la lista");
-	}
+	else printf("\nEl pais nombrado no se encuentra");
 }
 
 /*void EliminarPorContinente (ListaPais a, int *b)
