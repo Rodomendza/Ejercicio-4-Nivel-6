@@ -53,34 +53,36 @@ int main()
 
     do
     {
-    eleccion = Menu();
+	eleccion = Menu();
+	
+	system ("cls");
 
-    switch (eleccion)
-    {
-        case 1:
-            MostrarCapital(L1, n);
-            break;
-        case 2:
-            MostrarPais(L1, n);
-            break;
-        case 3:
-            AgregarPais(L1, &n);
-            break;
-        case 4:
-            EliminarPais(L1, &n);
-            break;
-        case 5:
-            EliminarPorContinente(L1, n);
-            break;
-        case 6:
-            MostrarPaisCapital(L1, n);
-            break;
-        default:
-            if(eleccion != 7)
-		    {
-			    printf("Debe ingresar una opcion valida");
-		    }
-            break;
+	switch (eleccion)
+	{
+		case 1:
+			MostrarCapital(L1, n);
+			break;
+		case 2:
+			MostrarPais(L1, n);
+			break;
+		case 3:
+			AgregarPais(L1, &n);
+			break;
+		case 4:
+			EliminarPais(L1, &n);
+			break;
+		case 5:
+			EliminarPorContinente(L1, n);
+			break;
+		case 6:
+			MostrarPaisCapital(L1, n);
+			break;
+		default:
+			if(eleccion != 7)
+			{
+				printf("Debe ingresar una opcion valida");
+			}
+			break;
         }
     }
     while (eleccion != 7);
@@ -96,15 +98,20 @@ void CargarLista (ListaPais a, int *b)
     *b = 0;
     i = 0;
 
-    printf("\n\n________CARGA DE LISTA DE PAISES________");
+    printf("________CARGA DE LISTA DE PAISES________");
 
     do
     {
+		fflush(stdin);
         printf("\n\nIngrese el nombre del pais: "); scanfString(a[i].pais);
         printf("\nIngrese el nombre de la capital: "); scanfString(a[i].capital);
-        printf("\nIngrese el nombre del continente"); scanfString(a[i].continente);
+        printf("\nIngrese el nombre del continente: "); scanfString(a[i].continente);
 
-        printf("Para continuar la carga ingrese 1"); scanf("%d", carga);
+        printf("\n\tPara continuar la carga ingrese 1\n"); 
+	printf("\n\tPara finalizar la carga ingrese 0\n");
+	printf("\nIngrese 0 o 1: "); scanf("%d", &carga);
+		
+	system("cls");
 
         *b += 1;
         i += 1;
@@ -121,9 +128,9 @@ void OrdenarLista(ListaPais a, int b)
 	for(i=0; i<b - 1; i++){
 		for(j=i+1; j<b; j++){
 			if(strcmp(a[i].pais , a[j].pais)==1){
-				aux=a[i];
+				aux[i] = a[i];
 				a[i] = a[j];
-				a[j] = aux;
+				a[j] = aux[i];
 			}
 		}
 	}
