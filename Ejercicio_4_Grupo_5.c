@@ -13,7 +13,7 @@ f) Mostrar todos los países y sus capitales.*/
 /*TAREAS*/
 
 #include <stdio.h>
-#include <stlid.h>
+#include <stdlib.h>
 #include <string.h>
 #define CMAX 100
 #define MAX 200
@@ -254,12 +254,13 @@ void EliminarPorContinente (ListaPais a, int *b)
     }
 }
 
-void MostrarPaisCapital (ListaPais a, int *b)
+void MostrarPaisCapital (ListaPais a, int b)
 {
 	int i;
 	
-	printf("\nPais-Capital\n")
-	for(i = 0; i < *b; i++)
+	printf("\nPais-Capital\n");
+	
+	for(i = 0; i < b; i++)
 	{
 		printf("\n%d) %s-%s", i, a[i].pais, a[i].capital);
 		
