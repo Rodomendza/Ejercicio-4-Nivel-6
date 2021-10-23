@@ -40,6 +40,7 @@ int BuscarContinente (ListaPais a, int b, char c[]);
 void AgregarPais (ListaPais a, int *b); /*2*/
 void EliminarPais (ListaPais a, int *b); /*2*/
 void EliminarRegistro(ListaPais a, int b, int pos);
+void EliminarRegistros(ListaPais a, int b, int pos);
 void EliminarPorContinente (ListaPais a, int *b); /*2*/
 void MostrarPaisCapital (ListaPais a, int b); /*1*/
 
@@ -241,6 +242,23 @@ int i;
 	*b += 1;
 }
 
+void EliminarRegistro(ListaPais a, int b, int pos)
+{
+	int i;
+	for(i=pos; pos<b; i++)
+		a[i]= a[i+1];
+}
+
+void EliminarRegistros(ListaPais a, int b, int pos)
+{
+	int i;
+	for(i = pos; pos < b; i++)
+	{ 
+		strcpy(a[i].continente, a[i + 1].continente);	
+	}
+	
+}
+
 void EliminarPais (ListaPais a, int *b)
 {
 	int pos, m=*b; 
@@ -260,29 +278,24 @@ void EliminarPais (ListaPais a, int *b)
 	else printf("\nEl pais nombrado no se encuentra");
 }
 
-/*void EliminarPorContinente (ListaPais a, int *b)
+void EliminarPorContinente (ListaPais a, int *b)
 {
-	int pos;
+	int pos, m=*b;
+
 	char Buscar[CMAX];
-
 	printf("\n\nIngrese el nombre del continente: "); scanfString(Buscar);
-	
-	pos = BuscarContinente (a, *b, Buscar);
 
+	pos = BuscarContinente (a, *b, Buscar);
 	if (strcmp(a[pos].continente, Buscar) == 0)
 	{
-		for(i = *b; i < *b; i++)
-		{ 
-			strcpy(a[i].continente, a[i + 1].continente);	
-		}
-	
+		EliminarRegistros(a, m, pos);
 		*b= *b - 1;
 	}
 	else
 	{
 		printf("\nEse contienente no se encuentra en la lista");
 	}
-}*/
+}
 
 int BuscarContinente (ListaPais a, int b, char c[])
 {
